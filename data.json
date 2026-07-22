@@ -1,22 +1,55 @@
 {
   "display_name": "Tokyo Weather",
-  "status": "awaiting",
-  "generated_utc": null,
+  "status": "paper",
+  "generated_utc": "2026-07-22T06:39:53Z",
   "source_box": "aws-dublin",
   "currency": "USD",
   "kpis": {
-    "book_equity": null,
-    "start_equity": null,
-    "realized_pnl": null,
-    "return_pct": null,
-    "open_positions": null,
-    "closed_trades": null,
-    "win_rate_pct": null,
-    "note": null
+    "book_equity": 1023.48,
+    "start_equity": 1000.0,
+    "realized_pnl": 23.48,
+    "return_pct": 2.35,
+    "open_positions": 0,
+    "closed_trades": 1,
+    "win_rate_pct": 100,
+    "note": "late-entry pilot · record mode · nominal $1k book"
   },
-  "equity_curve": { "labels": [], "values": [] },
-  "sleeves": [],
+  "equity_curve": {
+    "labels": [
+      "base",
+      "07-20"
+    ],
+    "values": [
+      1000.0,
+      1023.48
+    ]
+  },
+  "sleeves": [
+    {
+      "name": "Tokyo late-entry",
+      "trades": 1,
+      "win_pct": 100,
+      "pnl": 23.48,
+      "pf": null
+    }
+  ],
   "open_positions": [],
-  "recent_trades": [],
-  "recent_signals": []
+  "recent_trades": [
+    {
+      "time": "07-20",
+      "market": "Tokyo 35°C",
+      "side": "yes",
+      "reason": "won · 35°C",
+      "return_pct": 31.1,
+      "pnl": 23.48
+    }
+  ],
+  "recent_signals": [
+    {
+      "time": "07-20",
+      "market": "Tokyo late",
+      "side": "enter",
+      "detail": "35°C @ 0.756 ×100sh (print +10min, book $1043)"
+    }
+  ]
 }
