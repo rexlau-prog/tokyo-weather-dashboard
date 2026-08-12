@@ -49,22 +49,25 @@ def build(db_path: Path) -> dict:
     loss_sum = sum(-v for v in usd.values() if v and v < 0)
     pf = round(wins_sum / loss_sum, 2) if loss_sum > 0 else None
 
+    # Denominator = capital actually deployed across the closed trades (cost basis), NOT a
+    # notional book: this strategy sizes per-event, so a fixed book would misstate return.
+    deployed = sum((r["exec_cost"] or 0) * (r["shares"] or 0) for r in trades_r)
     kpis = {
-        "book_equity":    round(BOOK_BASE + total, 2),
-        "start_equity":   BOOK_BASE,
+        "book_equity":    round(deployed + total, 2),
+        "start_equity":   round(deployed, 2),
         "realized_pnl":   round(total, 2),
-        "return_pct":     round(100 * total / BOOK_BASE, 2),
+        "return_pct":     round(100 * total / deployed, 2) if deployed else None,
         "open_positions": len(open_r),
         "closed_trades":  len(trades_r),
         "win_rate_pct":   round(100 * wins / len(trades_r)) if trades_r else 0,
-        "note":           "late-entry pilot · record mode · nominal $1k book",
+        "note":           "late-entry pilot · return on capital deployed (per-event sizing)",
     }
 
-    # equity curve: nominal base, then cumulative realized by date
+    # equity curve: cumulative realized P&L, START AT 0 (pure P&L, not a book)
     by_date: dict[str, float] = {}
     for r in trades_r:
         by_date[r["date"]] = by_date.get(r["date"], 0.0) + (usd[id(r)] or 0.0)
-    labels, values, cum = ["base"], [BOOK_BASE], BOOK_BASE
+    labels, values, cum = ["start"], [0.0], 0.0
     for d in sorted(by_date):
         cum += by_date[d]
         labels.append(d[5:]); values.append(round(cum, 2))
@@ -93,12 +96,24 @@ def build(db_path: Path) -> dict:
     for t in trades:
         t.pop("_ts")
 
+    # NOTE: non-entry rows (skips) carry NULLs for exec_cost/shares/book_usd — format defensively.
+    def fmt(v, spec="", pre="", suf=""):
+        if v is None:
+            return ""
+        return f"{pre}{v:{spec}}{suf}" if spec else f"{pre}{v}{suf}"
+
     signals = []
     for r in T:
+        bits = [b for b in (
+            r["bucket"],
+            fmt(r["exec_cost"], pre="@ "),
+            fmt(r["shares"], ".0f", suf="sh"),
+            fmt(r["print_age_min"], ".0f", pre="print +", suf="min"),
+            fmt(r["book_usd"], ",.0f", pre="book $"),
+        ) if b]
         signals.append({"_ts": r["ts"], "time": r["date"][5:], "market": "Tokyo late",
-            "side": ("enter" if r["decision"] == "late_paper" else r["decision"]),
-            "detail": f'{r["bucket"]} @ {r["exec_cost"]} ×{r["shares"]:.0f}sh '
-                      f'(print +{r["print_age_min"]:.0f}min, book ${r["book_usd"]:.0f})'})
+            "side": ("enter" if r["decision"] == "late_paper" else (r["decision"] or "—")),
+            "detail": " · ".join(bits)})
     signals.sort(key=lambda x: x["_ts"], reverse=True)
     for s in signals:
         s.pop("_ts")
