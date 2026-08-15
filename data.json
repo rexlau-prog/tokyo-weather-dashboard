@@ -1,17 +1,17 @@
 {
   "display_name": "Tokyo Weather",
   "status": "paper",
-  "generated_utc": "2026-08-14T08:20:03Z",
+  "generated_utc": "2026-08-15T08:20:04Z",
   "source_box": "aws-dublin",
   "currency": "USD",
   "kpis": {
-    "book_equity": 227.89,
-    "start_equity": 1233.38,
-    "realized_pnl": -1005.49,
-    "return_pct": -81.52,
-    "open_positions": 1,
-    "closed_trades": 6,
-    "win_rate_pct": 33,
+    "book_equity": 227.32,
+    "start_equity": 1308.77,
+    "realized_pnl": -1081.45,
+    "return_pct": -82.63,
+    "open_positions": 0,
+    "closed_trades": 7,
+    "win_rate_pct": 29,
     "note": "late-entry pilot · return on capital deployed (per-event sizing)"
   },
   "equity_curve": {
@@ -22,7 +22,8 @@
       "07-30",
       "07-31",
       "08-01",
-      "08-05"
+      "08-05",
+      "08-14"
     ],
     "values": [
       0.0,
@@ -31,27 +32,29 @@
       -847.92,
       -946.51,
       -1076.71,
-      -1005.49
+      -1005.49,
+      -1081.45
     ]
   },
   "sleeves": [
     {
       "name": "Tokyo late-entry",
-      "trades": 6,
-      "win_pct": 33,
-      "pnl": -1005.49,
-      "pf": 0.09
+      "trades": 7,
+      "win_pct": 29,
+      "pnl": -1081.45,
+      "pf": 0.08
     }
   ],
-  "open_positions": [
-    {
-      "market": "Tokyo 30°C 08-14",
-      "side": "yes",
-      "notional": "$75",
-      "opened": "08-14 13:00 JST"
-    }
-  ],
+  "open_positions": [],
   "recent_trades": [
+    {
+      "time": "08-14",
+      "market": "Tokyo 30°C",
+      "side": "yes",
+      "reason": "lost · 31°C",
+      "return_pct": -100.8,
+      "pnl": -75.96
+    },
     {
       "time": "08-05",
       "market": "Tokyo 30°C",
