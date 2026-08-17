@@ -1,7 +1,7 @@
 {
   "display_name": "Tokyo Weather",
   "status": "paper",
-  "generated_utc": "2026-08-16T08:20:03Z",
+  "generated_utc": "2026-08-17T08:20:03Z",
   "source_box": "aws-dublin",
   "currency": "USD",
   "kpis": {
@@ -9,7 +9,7 @@
     "start_equity": 1308.77,
     "realized_pnl": -1081.45,
     "return_pct": -82.63,
-    "open_positions": 0,
+    "open_positions": 1,
     "closed_trades": 7,
     "win_rate_pct": 29,
     "note": "late-entry pilot · return on capital deployed (per-event sizing)"
@@ -45,7 +45,14 @@
       "pf": 0.08
     }
   ],
-  "open_positions": [],
+  "open_positions": [
+    {
+      "market": "Tokyo 28°C 08-17",
+      "side": "yes",
+      "notional": "$286",
+      "opened": "08-17 13:00 JST"
+    }
+  ],
   "recent_trades": [
     {
       "time": "08-14",
@@ -105,6 +112,12 @@
     }
   ],
   "recent_signals": [
+    {
+      "time": "08-17",
+      "market": "Tokyo late",
+      "side": "enter",
+      "detail": "28°C · @ 0.534 · 535sh · print +10min · book $919"
+    },
     {
       "time": "08-14",
       "market": "Tokyo late",
@@ -170,12 +183,6 @@
       "market": "Tokyo late",
       "side": "skip_rain",
       "detail": "31°C · print +10min"
-    },
-    {
-      "time": "07-27",
-      "market": "Tokyo late",
-      "side": "skip_cost",
-      "detail": "30°C · @ 0.9063192771084339 · 83sh · print +10min · book $1,600"
     }
   ]
 }
