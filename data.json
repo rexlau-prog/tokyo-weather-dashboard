@@ -1,17 +1,17 @@
 {
   "display_name": "Tokyo Weather",
   "status": "paper",
-  "generated_utc": "2026-08-17T08:20:03Z",
+  "generated_utc": "2026-08-18T08:20:03Z",
   "source_box": "aws-dublin",
   "currency": "USD",
   "kpis": {
-    "book_equity": 227.32,
-    "start_equity": 1308.77,
-    "realized_pnl": -1081.45,
-    "return_pct": -82.63,
-    "open_positions": 1,
-    "closed_trades": 7,
-    "win_rate_pct": 29,
+    "book_equity": 220.68,
+    "start_equity": 1594.46,
+    "realized_pnl": -1373.78,
+    "return_pct": -86.16,
+    "open_positions": 0,
+    "closed_trades": 8,
+    "win_rate_pct": 25,
     "note": "late-entry pilot · return on capital deployed (per-event sizing)"
   },
   "equity_curve": {
@@ -23,7 +23,8 @@
       "07-31",
       "08-01",
       "08-05",
-      "08-14"
+      "08-14",
+      "08-17"
     ],
     "values": [
       0.0,
@@ -33,27 +34,29 @@
       -946.51,
       -1076.71,
       -1005.49,
-      -1081.45
+      -1081.45,
+      -1373.78
     ]
   },
   "sleeves": [
     {
       "name": "Tokyo late-entry",
-      "trades": 7,
-      "win_pct": 29,
-      "pnl": -1081.45,
-      "pf": 0.08
+      "trades": 8,
+      "win_pct": 25,
+      "pnl": -1373.78,
+      "pf": 0.06
     }
   ],
-  "open_positions": [
-    {
-      "market": "Tokyo 28°C 08-17",
-      "side": "yes",
-      "notional": "$286",
-      "opened": "08-17 13:00 JST"
-    }
-  ],
+  "open_positions": [],
   "recent_trades": [
+    {
+      "time": "08-17",
+      "market": "Tokyo 28°C",
+      "side": "yes",
+      "reason": "lost · 29°C",
+      "return_pct": -102.3,
+      "pnl": -292.32
+    },
     {
       "time": "08-14",
       "market": "Tokyo 30°C",
@@ -112,6 +115,12 @@
     }
   ],
   "recent_signals": [
+    {
+      "time": "08-18",
+      "market": "Tokyo late",
+      "side": "skip_cost",
+      "detail": "31°C · @ 0.8783720930232557 · 86sh · print +10min · book $548"
+    },
     {
       "time": "08-17",
       "market": "Tokyo late",
@@ -177,12 +186,6 @@
       "market": "Tokyo late",
       "side": "enter",
       "detail": "33°C · @ 0.653 · 1071sh · print +10min · book $954"
-    },
-    {
-      "time": "07-28",
-      "market": "Tokyo late",
-      "side": "skip_rain",
-      "detail": "31°C · print +10min"
     }
   ]
 }
