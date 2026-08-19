@@ -1,7 +1,7 @@
 {
   "display_name": "Tokyo Weather",
   "status": "paper",
-  "generated_utc": "2026-08-18T08:20:03Z",
+  "generated_utc": "2026-08-19T08:20:03Z",
   "source_box": "aws-dublin",
   "currency": "USD",
   "kpis": {
@@ -116,6 +116,12 @@
   ],
   "recent_signals": [
     {
+      "time": "08-19",
+      "market": "Tokyo late",
+      "side": "skip_cost",
+      "detail": "32°C · @ 0.9699987179487178 · 78sh · print +10min · book $470"
+    },
+    {
       "time": "08-18",
       "market": "Tokyo late",
       "side": "skip_cost",
@@ -180,12 +186,6 @@
       "market": "Tokyo late",
       "side": "enter",
       "detail": "33°C · @ 0.501 · 192sh · print +10min · book $902"
-    },
-    {
-      "time": "07-30",
-      "market": "Tokyo late",
-      "side": "enter",
-      "detail": "33°C · @ 0.653 · 1071sh · print +10min · book $954"
     }
   ]
 }
